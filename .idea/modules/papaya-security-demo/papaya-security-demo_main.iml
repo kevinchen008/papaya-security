@@ -11,7 +11,7 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$MODULE_DIR$/../../../papaya-security-demo/out/production/classes" />
+    <output url="file://$MODULE_DIR$/../../../papaya-security-demo/build/classes/main" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../papaya-security-demo/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../papaya-security-demo/src/main/java" isTestSource="false" />
@@ -21,6 +21,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="papaya-security-browser_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-starter-test:1.5.10.RELEASE" level="project" />
+    <orderEntry type="library" name="Gradle: org.liquibase:liquibase-core:3.4.2" level="project" />
     <orderEntry type="module" module-name="papaya-security-core_main" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test:1.5.10.RELEASE" level="project" />
     <orderEntry type="library" name="Gradle: org.springframework.boot:spring-boot-test-autoconfigure:1.5.10.RELEASE" level="project" />

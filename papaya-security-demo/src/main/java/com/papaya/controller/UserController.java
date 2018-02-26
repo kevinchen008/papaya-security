@@ -38,6 +38,7 @@ public class UserController {
         if(errors.hasErrors()){
             errors.getAllErrors().stream().forEach(error ->System.out.println(error.getDefaultMessage()) );
         }
+        user.setId("1");
         return  user;
     }
 }
