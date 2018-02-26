@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app.iml" group="papaya-security-app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_main.iml" group="papaya-security-app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_test.iml" group="papaya-security-app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-browser.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-browser.iml" group="papaya-security-browser" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-browser/papaya-security-browser_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-browser/papaya-security-browser_main.iml" group="papaya-security-browser" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-browser/papaya-security-browser_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-browser/papaya-security-browser_test.iml" group="papaya-security-browser" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-core.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-core.iml" group="papaya-security-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-core/papaya-security-core_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-core/papaya-security-core_main.iml" group="papaya-security-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-core/papaya-security-core_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-core/papaya-security-core_test.iml" group="papaya-security-core" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-demo.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-demo.iml" group="papaya-security-demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-demo/papaya-security-demo_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-demo/papaya-security-demo_main.iml" group="papaya-security-demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-demo/papaya-security-demo_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-demo/papaya-security-demo_test.iml" group="papaya-security-demo" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security_main.iml" group="papaya-security" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security_test.iml" group="papaya-security" />
+    </modules>
+  </component>
+</project>
