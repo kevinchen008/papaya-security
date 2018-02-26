@@ -9,11 +9,21 @@ public class User {
 
     public interface userDetailView extends  userSimpleView{}
 
+    private String id;
+
     private String username;
 
     private String password;
 
     private String desc;
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
+    }
 
     @JsonView(userSimpleView.class)
     public String getUsername() {

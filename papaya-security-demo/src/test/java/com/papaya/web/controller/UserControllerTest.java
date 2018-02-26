@@ -58,8 +58,8 @@ public class UserControllerTest {
 
     @Test
     public void whenCreateSucess() throws Exception {
-        String content="";
-        mockMvc.perform(MockMvcRequestBuilders.patch("/user")
+        String content="{\"username\":\"kevin\",\"password\":\"123456\",\"desc\":\"\"}";
+        mockMvc.perform(MockMvcRequestBuilders.post("/user")
                 .content(content)
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
