@@ -6,6 +6,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
@@ -63,5 +64,13 @@ public class UserControllerTest {
                 .content(content)
                 .contentType(MediaType.APPLICATION_JSON_UTF8))
                 .andExpect(MockMvcResultMatchers.jsonPath("$.id").value("1"));
+    }
+
+
+    @Test
+    public void fileUploadSuccess() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.fileUpload("/file")
+                .file(new MockMultipartFile("file","hello.txt","multipart/form-data","hello file".getBytes())))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 }
