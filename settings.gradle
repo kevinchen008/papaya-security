@@ -3,4 +3,5 @@ include 'papaya-security-core'
 include 'papaya-security-browser'
 include 'papaya-security-app'
 include 'papaya-security-demo'
+include 'papaya-generator'
 

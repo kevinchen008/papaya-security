@@ -8,9 +8,12 @@ public class WiremockServer {
         WireMock.configureFor(9999);
         WireMock.removeAllMappings();
 
-        WireMock.stubFor(WireMock.get(WireMock.urlEqualTo("/order/1"))
-                .willReturn(WireMock.aResponse().withBody("{'id':123}")
-                .withStatus(200)));
+        mock("/order/1","{'id':123}");
+    }
 
+    private static void mock(String url,String response){
+        WireMock.stubFor(WireMock.get(WireMock.urlEqualTo(url))
+                .willReturn(WireMock.aResponse().withBody(response)
+                        .withStatus(200)));
     }
 }

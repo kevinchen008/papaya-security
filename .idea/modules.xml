@@ -2,6 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator.iml" group="papaya-generator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_main.iml" group="papaya-generator" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_test.iml" group="papaya-generator" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app.iml" group="papaya-security-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_main.iml" group="papaya-security-app" />

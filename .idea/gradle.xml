@@ -10,6 +10,7 @@
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
+            <option value="$PROJECT_DIR$/papaya-generator" />
             <option value="$PROJECT_DIR$/papaya-security-app" />
             <option value="$PROJECT_DIR$/papaya-security-browser" />
             <option value="$PROJECT_DIR$/papaya-security-core" />
