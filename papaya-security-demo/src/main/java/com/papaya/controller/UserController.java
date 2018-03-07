@@ -20,7 +20,7 @@ public class UserController {
     @GetMapping
     @JsonView(User.userSimpleView.class)
     @ApiOperation(value="用户查询服务")
-    public List<User> query(@RequestParam String username){
+    public List<User> query(){
         List<User> users = new ArrayList<>();
 
         users.add(new User());
