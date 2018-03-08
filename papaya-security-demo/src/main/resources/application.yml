@@ -13,7 +13,20 @@ spring:
 #security
 security:
     basic:
-      enabled:  false
+      enabled:  true
+
+papaya.security:
+      browser:
+#        loginPage: /demo-login.html
+        loginType: REDIRECT
+      validateCode:
+        imageCode:
+          width: 100
+          height: 50
+          length: 6
+          expried: 60
+          urls: /user,/user/*
+
 
 #liquibase
 liquibase:
