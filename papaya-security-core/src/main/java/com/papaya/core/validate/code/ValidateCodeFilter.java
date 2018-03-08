@@ -1,6 +1,7 @@
 package com.papaya.core.validate.code;
 
 import com.papaya.core.properties.PapayaSecurityProperties;
+import com.papaya.core.validate.code.image.ImageCode;
 import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
@@ -32,6 +33,8 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
     Set<String> urls = new HashSet<>();
 
+    Set<String> smsCodeUrls = new HashSet<>();
+
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
     @Override
@@ -40,6 +43,10 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
         String[] arrs = StringUtils.split( securityProperties.getValidateCode().getImageCode().getUrls(),",");
         CollectionUtils.mergeArrayIntoCollection(arrs,urls);
+        urls.add("/authentication/form");
+
+        String[] arrsSms = StringUtils.split( securityProperties.getValidateCode().getSmsCode().getUrls(),",");
+        CollectionUtils.mergeArrayIntoCollection(smsCodeUrls,urls);
         urls.add("/authentication/form");
     }
 

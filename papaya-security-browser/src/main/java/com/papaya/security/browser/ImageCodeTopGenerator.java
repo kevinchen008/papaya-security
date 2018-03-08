@@ -1,6 +1,6 @@
 package com.papaya.security.browser;
 
-import com.papaya.core.validate.code.ImageCode;
+import com.papaya.core.validate.code.image.ImageCode;
 import com.papaya.core.validate.code.ValidateCodeGenerator;
 import org.springframework.stereotype.Component;
 

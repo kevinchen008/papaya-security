@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <module external.linked.project.id=":papaya-generator:test" external.linked.project.path="$MODULE_DIR$/../../../papaya-generator" external.root.project.path="$MODULE_DIR$/../../.." external.system.id="GRADLE" external.system.module.group="com.papaya.security" external.system.module.type="sourceSet" external.system.module.version="1.0-SNAPSHOT" type="JAVA_MODULE" version="4">
+  <component name="FacetManager">
+    <facet type="Spring" name="Spring">
+      <configuration />
+    </facet>
+  </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output-test url="file://$MODULE_DIR$/../../../papaya-generator/build/classes/test" />
+    <output-test url="file://$MODULE_DIR$/../../../papaya-generator/out/test/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../papaya-generator/src/test">
       <sourceFolder url="file://$MODULE_DIR$/../../../papaya-generator/src/test/java" isTestSource="true" />

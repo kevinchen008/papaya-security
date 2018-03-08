@@ -5,6 +5,7 @@
     <content url="file://$MODULE_DIR$/../../../papaya-generator">
       <excludeFolder url="file://$MODULE_DIR$/../../../papaya-generator/.gradle" />
       <excludeFolder url="file://$MODULE_DIR$/../../../papaya-generator/build" />
+      <excludeFolder url="file://$MODULE_DIR$/../../../papaya-generator/out" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />

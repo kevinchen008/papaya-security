@@ -11,7 +11,7 @@
     </facet>
   </component>
   <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_1_8">
-    <output url="file://$MODULE_DIR$/../../../papaya-security-demo/build/classes/main" />
+    <output url="file://$MODULE_DIR$/../../../papaya-security-demo/out/production/classes" />
     <exclude-output />
     <content url="file://$MODULE_DIR$/../../../papaya-security-demo/src/main">
       <sourceFolder url="file://$MODULE_DIR$/../../../papaya-security-demo/src/main/java" isTestSource="false" />

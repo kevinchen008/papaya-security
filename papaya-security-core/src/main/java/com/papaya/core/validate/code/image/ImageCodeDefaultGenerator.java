@@ -1,6 +1,7 @@
-package com.papaya.core.validate.code;
+package com.papaya.core.validate.code.image;
 
 import com.papaya.core.properties.PapayaSecurityProperties;
+import com.papaya.core.validate.code.ValidateCodeGenerator;
 
 import javax.servlet.http.HttpServletRequest;
 import java.awt.*;

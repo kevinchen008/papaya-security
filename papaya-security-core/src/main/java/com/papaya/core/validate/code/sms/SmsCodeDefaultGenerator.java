@@ -1,5 +1,7 @@
-package com.papaya.core.validate.code;
+package com.papaya.core.validate.code.sms;
 
+import com.papaya.core.validate.code.ValidateCode;
+import com.papaya.core.validate.code.ValidateCodeGenerator;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
@@ -12,7 +14,7 @@ import javax.servlet.http.HttpServletRequest;
  */
 
 @Component("smsCodeGenerator")
-public class SmsCodeDefaultGenerator implements ValidateCodeGenerator<ValidateCode>{
+public class SmsCodeDefaultGenerator implements ValidateCodeGenerator<ValidateCode> {
 
     @Override
     public ValidateCode generatorCode(HttpServletRequest request) {

@@ -2,6 +2,8 @@ package com.papaya.core.validate.code;
 
 import org.springframework.web.context.request.ServletWebRequest;
 
+import java.io.IOException;
+
 /**
  * @Description: java类作用描述
  * @Author: kevin.chen
@@ -12,5 +14,5 @@ public interface ValidateCodeProcesser {
 
     public static final String SESSION_KEY_PRE="SESSION_KEY_PRE";
 
-    void create(ServletWebRequest request);
+    void create(ServletWebRequest request) throws IOException;
 }

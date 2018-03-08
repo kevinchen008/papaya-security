@@ -1,4 +1,6 @@
-package com.papaya.core.validate.code;
+package com.papaya.core.validate.code.image;
+
+import com.papaya.core.validate.code.ValidateCode;
 
 import java.awt.image.BufferedImage;
 
