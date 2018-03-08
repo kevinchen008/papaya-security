@@ -1,11 +1,8 @@
 package com.papaya.core.properties;
 
-public class ImageCodeProperties {
+public class ImageCodeProperties extends SmsCodeProperties {
     private int width = 80;
-    private int height= 40;
-    private int length = 4;
-    private int expried = 60;
-    private String urls;
+    private int height = 40;
 
     public int getWidth() {
         return width;
@@ -21,29 +18,5 @@ public class ImageCodeProperties {
 
     public void setHeight(int height) {
         this.height = height;
-    }
-
-    public int getLength() {
-        return length;
-    }
-
-    public void setLength(int length) {
-        this.length = length;
-    }
-
-    public int getExpried() {
-        return expried;
-    }
-
-    public void setExpried(int expried) {
-        this.expried = expried;
-    }
-
-    public String getUrls() {
-        return urls;
-    }
-
-    public void setUrls(String urls) {
-        this.urls = urls;
     }
 }

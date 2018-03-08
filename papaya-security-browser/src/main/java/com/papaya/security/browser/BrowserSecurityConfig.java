@@ -38,7 +38,8 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setAuthenticationFailureHandler(papayaAuthenticationFailureHandler);
         validateCodeFilter.setSecurityProperties(papayaSecurityProperties);
 
-        http.addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+        http
+                .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")

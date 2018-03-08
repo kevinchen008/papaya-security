@@ -8,12 +8,12 @@ import java.awt.image.BufferedImage;
 import java.util.Date;
 import java.util.Random;
 
-public class ImageCodeDefaultGenerator implements  ImageCodeGenerator {
+public class ImageCodeDefaultGenerator implements ValidateCodeGenerator<ImageCode> {
 
     private PapayaSecurityProperties securityProperties;
 
     @Override
-    public ImageCode createImageCode(HttpServletRequest request) {
+    public ImageCode generatorCode(HttpServletRequest request) {
         int width = securityProperties.getValidateCode().getImageCode().getWidth();
         int height = securityProperties.getValidateCode().getImageCode().getHeight();
         int lines = 10;

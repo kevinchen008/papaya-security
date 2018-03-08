@@ -17,9 +17,7 @@ import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.awt.*;
 import java.io.IOException;
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -33,7 +31,6 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     private PapayaSecurityProperties securityProperties;
 
     Set<String> urls = new HashSet<>();
-
 
     private AntPathMatcher pathMatcher = new AntPathMatcher();
 
@@ -66,10 +63,10 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
     }
 
     private void validate(ServletWebRequest servletWebRequest) throws ServletRequestBindingException {
-        ImageCode imageCode = (ImageCode)sessionStrategy.getAttribute(servletWebRequest,ValidateCodeController.SESSION_KEY);
+        ImageCode imageCode = (ImageCode)sessionStrategy.getAttribute(servletWebRequest,ValidateCodeController.SESSION_KEY_IMAGE_CODE);
         String CodeInRequest = ServletRequestUtils.getStringParameter(servletWebRequest.getRequest(),"imageCode");
 
-        sessionStrategy.removeAttribute(servletWebRequest,ValidateCodeController.SESSION_KEY);
+        sessionStrategy.removeAttribute(servletWebRequest,ValidateCodeController.SESSION_KEY_IMAGE_CODE);
     }
 
     public AuthenticationFailureHandler getAuthenticationFailureHandler() {

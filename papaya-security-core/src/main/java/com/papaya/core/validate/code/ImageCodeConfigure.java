@@ -13,8 +13,8 @@ public class ImageCodeConfigure {
     private PapayaSecurityProperties securityProperties;
 
     @Bean
-    @ConditionalOnMissingBean(name = "imageCodeDefaultGenerator")
-    public ImageCodeGenerator imageCodeDefaultGenerator(){
+    @ConditionalOnMissingBean(name = "imageCodeGenerator")
+    public ValidateCodeGenerator imageCodeDefaultGenerator(){
         ImageCodeDefaultGenerator imageCodeDefaultGenerator = new ImageCodeDefaultGenerator();
         imageCodeDefaultGenerator.setSecurityProperties(securityProperties);
         return imageCodeDefaultGenerator;

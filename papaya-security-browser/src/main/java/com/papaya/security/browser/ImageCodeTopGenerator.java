@@ -1,15 +1,15 @@
 package com.papaya.security.browser;
 
 import com.papaya.core.validate.code.ImageCode;
-import com.papaya.core.validate.code.ImageCodeGenerator;
+import com.papaya.core.validate.code.ValidateCodeGenerator;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Component("imageCodeDefaultGenerator")
-public class ImageCodeTopGenerator implements ImageCodeGenerator {
+@Component("imageCodeGenerator")
+public class ImageCodeTopGenerator implements ValidateCodeGenerator {
     @Override
-    public ImageCode createImageCode(HttpServletRequest request) {
+    public ImageCode generatorCode(HttpServletRequest request) {
         System.out.println("高级验证码生成");
         return null;
     }
