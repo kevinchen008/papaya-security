@@ -15,4 +15,6 @@ public interface ValidateCodeProcesser {
     public static final String SESSION_KEY_PRE="SESSION_KEY_PRE";
 
     void create(ServletWebRequest request) throws IOException;
+
+    public void validate(ServletWebRequest request);
 }

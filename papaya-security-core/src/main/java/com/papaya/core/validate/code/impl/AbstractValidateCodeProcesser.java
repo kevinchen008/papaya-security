@@ -1,8 +1,6 @@
 package com.papaya.core.validate.code.impl;
 
-import com.papaya.core.validate.code.ValidateCode;
-import com.papaya.core.validate.code.ValidateCodeGenerator;
-import com.papaya.core.validate.code.ValidateCodeProcesser;
+import com.papaya.core.validate.code.*;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
@@ -35,27 +33,30 @@ public abstract class AbstractValidateCodeProcesser<C extends ValidateCode> impl
     }
 
     public C getValidateCode(ServletWebRequest request){
-        String type =getValidateType(request);
-        ValidateCodeGenerator validateCodeGenerator = validateCodeGenerators.get(type+"CodeGenerator");
+        String type =getValidateCodeType(request).toString().toLowerCase();
+        String generatorName = type+ValidateCodeGenerator.class.getSimpleName();
+        ValidateCodeGenerator validateCodeGenerator = validateCodeGenerators.get(generatorName);
+        if(validateCodeGenerator==null){
+            throw new ValidateCodeException("验证码生成器"+generatorName+"找不到");
+        }
         return (C) validateCodeGenerator.generatorCode(request.getRequest());
     }
 
-
-    public String getValidateType(ServletWebRequest request){
-        return  StringUtils.substringAfter(request.getRequest().getRequestURI(),"/");
+    private ValidateCodeType getValidateCodeType(ServletWebRequest request) {
+        String type = StringUtils.substringBefore(getClass().getSimpleName(), "CodeProcessor");
+        return ValidateCodeType.valueOf(type.toUpperCase());
     }
 
     public void save(ServletWebRequest request,C validateCode){
-        sessionStrategy.setAttribute(request,SESSION_KEY_PRE+getValidateType(request),validateCode);
+        sessionStrategy.setAttribute(request,SESSION_KEY_PRE+getValidateCodeType(request).toString(),validateCode);
     }
 
     public abstract void send(ServletWebRequest request,C validateCode) throws IOException;
 
 
     public void validate(ServletWebRequest request) throws ServletRequestBindingException {
-        C sessionStrategyAttribute = (C) sessionStrategy.getAttribute(request,SESSION_KEY_PRE+getValidateType(request));
+        C sessionStrategyAttribute = (C) sessionStrategy.getAttribute(request,SESSION_KEY_PRE+getValidateCodeType(request));
         ServletRequestUtils.getStringParameter(request.getRequest(),SESSION_KEY_PRE);
-
     }
 
 }
