@@ -9,6 +9,8 @@ spring:
       url: jdbc:mysql://127.0.0.1:3306/papaya?useUnicode=yes
       username: root
       password: 123456
+    session:
+      store-type: none
 
 #security
 security:

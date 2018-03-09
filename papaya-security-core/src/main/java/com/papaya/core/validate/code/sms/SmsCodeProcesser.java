@@ -8,7 +8,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 
 import java.io.IOException;
 
-@Component("smsCodeProcesser")
+@Component("smsValidateCodeProcesser")
 public class SmsCodeProcesser extends AbstractValidateCodeProcesser<ValidateCode> {
 
     @Autowired

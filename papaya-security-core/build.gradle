@@ -22,5 +22,5 @@ dependencies {
     compile 'commons-lang:commons-lang'
     compile 'commons-collections:commons-collections'
     compile 'commons-beanutils:commons-beanutils'
-    compile group: 'org.springframework.session', name: 'spring-session'
+//    compile group: 'org.springframework.session', name: 'spring-session'
 }

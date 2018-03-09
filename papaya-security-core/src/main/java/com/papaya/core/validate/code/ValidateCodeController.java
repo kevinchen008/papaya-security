@@ -19,7 +19,7 @@ public class ValidateCodeController {
 
     @GetMapping("/code/{type}")
     public void createImageCode(@PathVariable String type, HttpServletRequest request, HttpServletResponse response) throws IOException {
-        validateCodeProcesserHolder.findValidateCodeProcesser(type).create(new ServletWebRequest(request));
+        validateCodeProcesserHolder.findValidateCodeProcesser(type).create(new ServletWebRequest(request,response));
     }
 
 }

@@ -13,7 +13,7 @@ public class ValidateCodeConfigure {
     @Autowired
     private PapayaSecurityProperties securityProperties;
 
-    @Bean
+    @Bean(name = "imageValidateCodeGenerator")
     @ConditionalOnMissingBean(name = "imageValidateCodeGenerator")
     public ValidateCodeGenerator imageCodeDefaultGenerator(){
         ImageCodeDefaultGenerator imageCodeDefaultGenerator = new ImageCodeDefaultGenerator();

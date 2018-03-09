@@ -21,7 +21,7 @@ import java.util.Map;
 public abstract class AbstractValidateCodeProcesser<C extends ValidateCode> implements ValidateCodeProcesser {
 
     @Autowired
-    private Map<String,ValidateCodeGenerator> validateCodeGenerators;
+    public Map<String,ValidateCodeGenerator> validateCodeGenerators;
 
     SessionStrategy sessionStrategy = new HttpSessionSessionStrategy();
 
@@ -32,6 +32,11 @@ public abstract class AbstractValidateCodeProcesser<C extends ValidateCode> impl
         send(request,validateCode);
     }
 
+    /**
+     * 生成验证码
+     * @param request
+     * @return
+     */
     public C getValidateCode(ServletWebRequest request){
         String type =getValidateCodeType(request).toString().toLowerCase();
         String generatorName = type+ValidateCodeGenerator.class.getSimpleName();
@@ -42,11 +47,21 @@ public abstract class AbstractValidateCodeProcesser<C extends ValidateCode> impl
         return (C) validateCodeGenerator.generatorCode(request.getRequest());
     }
 
+    /**
+     *  获取验证码类型
+     * @param request
+     * @return
+     */
     private ValidateCodeType getValidateCodeType(ServletWebRequest request) {
-        String type = StringUtils.substringBefore(getClass().getSimpleName(), "CodeProcessor");
+        String type = StringUtils.substringBefore(getClass().getSimpleName(), "CodeProcesser");
         return ValidateCodeType.valueOf(type.toUpperCase());
     }
 
+    /**
+     * 保存验证码
+     * @param request
+     * @param validateCode
+     */
     public void save(ServletWebRequest request,C validateCode){
         sessionStrategy.setAttribute(request,SESSION_KEY_PRE+getValidateCodeType(request).toString(),validateCode);
     }
@@ -54,9 +69,33 @@ public abstract class AbstractValidateCodeProcesser<C extends ValidateCode> impl
     public abstract void send(ServletWebRequest request,C validateCode) throws IOException;
 
 
+    /**
+     * 校验验证码
+     * @param request
+     * @throws ServletRequestBindingException
+     */
     public void validate(ServletWebRequest request) throws ServletRequestBindingException {
-        C sessionStrategyAttribute = (C) sessionStrategy.getAttribute(request,SESSION_KEY_PRE+getValidateCodeType(request));
-        ServletRequestUtils.getStringParameter(request.getRequest(),SESSION_KEY_PRE);
+        ValidateCodeType validateCodeType = getValidateCodeType(request);
+        C codeInSession = (C) sessionStrategy.getAttribute(request,SESSION_KEY_PRE+validateCodeType.toString());
+        String codeInReq =  ServletRequestUtils.getStringParameter(request.getRequest(),validateCodeType.getParamNameOnValidate());
+
+        if(StringUtils.isEmpty(codeInReq)){
+            throw new ValidateCodeException("获取验证码不存在.");
+        }
+
+        if(StringUtils.isEmpty(codeInSession.getCode())){
+            throw new ValidateCodeException("获取验证码不存在.");
+        }
+
+        if(codeInSession.isExpried()){
+            throw new ValidateCodeException("验证码超时");
+        }
+
+        if(!StringUtils.endsWithIgnoreCase(codeInReq,codeInSession.getCode())){
+            throw new ValidateCodeException("验证码不匹配");
+        }
+
+        sessionStrategy.removeAttribute(request,SESSION_KEY_PRE+ validateCodeType.toString());
     }
 
 }

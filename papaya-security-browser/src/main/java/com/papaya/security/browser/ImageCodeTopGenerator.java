@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 
 import javax.servlet.http.HttpServletRequest;
 
-@Component("imageCodeGenerator")
+/*@Component("imageValidateCodeGenerator")*/
 public class ImageCodeTopGenerator implements ValidateCodeGenerator {
     @Override
     public ImageCode generatorCode(HttpServletRequest request) {

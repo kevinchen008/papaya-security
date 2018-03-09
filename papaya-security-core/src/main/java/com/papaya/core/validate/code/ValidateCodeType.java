@@ -16,7 +16,7 @@ public enum ValidateCodeType {
 	SMS {
 		@Override
 		public String getParamNameOnValidate() {
-			return "sms";
+			return "smsCode";
 		}
 	},
 	/**
@@ -25,7 +25,7 @@ public enum ValidateCodeType {
 	IMAGE {
 		@Override
 		public String getParamNameOnValidate() {
-			return "image";
+			return "imageCode";
 		}
 	};
 

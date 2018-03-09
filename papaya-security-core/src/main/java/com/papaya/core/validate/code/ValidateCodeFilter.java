@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.web.authentication.AuthenticationFailureHandler;
 import org.springframework.social.connect.web.HttpSessionSessionStrategy;
 import org.springframework.social.connect.web.SessionStrategy;
+import org.springframework.stereotype.Component;
 import org.springframework.util.AntPathMatcher;
 import org.springframework.util.CollectionUtils;
 import org.springframework.web.bind.ServletRequestBindingException;
@@ -26,10 +27,13 @@ import java.util.Map;
 import java.util.Set;
 import java.util.function.Consumer;
 
+@Component
 public class ValidateCodeFilter extends OncePerRequestFilter implements InitializingBean{
 
+    @Autowired
     private AuthenticationFailureHandler authenticationFailureHandler;
 
+    @Autowired
     private PapayaSecurityProperties securityProperties;
 
     Map<String,ValidateCodeType> urlMap = new HashMap<String,ValidateCodeType>();
@@ -45,12 +49,16 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
 
         addUrlToMap(securityProperties.getValidateCode().getImageCode().getUrls(),ValidateCodeType.IMAGE);
         addUrlToMap(securityProperties.getValidateCode().getSmsCode().getUrls(),ValidateCodeType.SMS);
+        urlMap.put("/authentication/form",ValidateCodeType.IMAGE);
+        urlMap.put("/authentication/form",ValidateCodeType.SMS);
     }
 
     public void addUrlToMap(String urls,ValidateCodeType validateCodeType){
-        String[] urlArr = StringUtils.split(urls,",");
-        for(String url :urlArr){
-            urlMap.put(url,validateCodeType.IMAGE);
+        if(StringUtils.isNotEmpty(urls)) {
+            String[] urlArr = StringUtils.split(urls, ",");
+            for (String url : urlArr) {
+                urlMap.put(url, validateCodeType.IMAGE);
+            }
         }
     }
 
@@ -63,9 +71,10 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
                 validateCodeProcesserHolder.findValidateCodeProcesser(validateCodeType).validate(new ServletWebRequest(request));
             } catch (ValidateCodeException e) {
                 authenticationFailureHandler.onAuthenticationFailure(request, response, e);
+                return;
             }
         }
-        filterChain.doFilter(request, response);
+            filterChain.doFilter(request, response);
     }
 
     public ValidateCodeType getValidateCodeType(HttpServletRequest request){
@@ -81,19 +90,4 @@ public class ValidateCodeFilter extends OncePerRequestFilter implements Initiali
         return result;
     }
 
-    public AuthenticationFailureHandler getAuthenticationFailureHandler() {
-        return authenticationFailureHandler;
-    }
-
-    public void setAuthenticationFailureHandler(AuthenticationFailureHandler authenticationFailureHandler) {
-        this.authenticationFailureHandler = authenticationFailureHandler;
-    }
-
-    public PapayaSecurityProperties getSecurityProperties() {
-        return securityProperties;
-    }
-
-    public void setSecurityProperties(PapayaSecurityProperties securityProperties) {
-        this.securityProperties = securityProperties;
-    }
 }
