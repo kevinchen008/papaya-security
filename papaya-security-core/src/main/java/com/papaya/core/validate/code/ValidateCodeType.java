@@ -16,7 +16,7 @@ public enum ValidateCodeType {
 	SMS {
 		@Override
 		public String getParamNameOnValidate() {
-			return "s";
+			return "smsCode";
 		}
 	},
 	/**
@@ -25,7 +25,7 @@ public enum ValidateCodeType {
 	IMAGE {
 		@Override
 		public String getParamNameOnValidate() {
-			return "s";
+			return "imageCode";
 		}
 	};
 
@@ -35,9 +35,5 @@ public enum ValidateCodeType {
 	 */
 	public abstract String getParamNameOnValidate();
 
-
-	public static void  main(String[] args){
-		System.out.println(ValidateCodeType.SMS.toString());
-	}
 
 }

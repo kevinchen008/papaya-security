@@ -7,7 +7,7 @@ import org.springframework.web.context.request.ServletWebRequest;
 import javax.imageio.ImageIO;
 import java.io.IOException;
 
-@Component("imageCodeProcesser")
+@Component("imageValidateCodeProcesser")
 public class ImageCodeProcesser extends AbstractValidateCodeProcesser<ImageCode> {
     @Override
     public void send(ServletWebRequest request, ImageCode imageCode) throws IOException {

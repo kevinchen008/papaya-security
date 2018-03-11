@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
  * @Version: 1.0
  */
 
-@Component("smsCodeGenerator")
+@Component("smsValidateCodeGenerator")
 public class SmsCodeDefaultGenerator implements ValidateCodeGenerator<ValidateCode> {
 
     @Override
