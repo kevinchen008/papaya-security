@@ -1,5 +1,6 @@
 package com.papaya.security.browser;
 
+import com.papaya.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.papaya.core.properties.PapayaSecurityProperties;
 import com.papaya.core.validate.code.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,9 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     private AuthenticationFailureHandler papayaAuthenticationFailureHandler;
 
+    @Autowired
+    private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
+
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
@@ -39,7 +43,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
         validateCodeFilter.setSecurityProperties(papayaSecurityProperties);
 
         http
-                .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+             //   .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
@@ -47,10 +51,11 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(papayaAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/authentication/require",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
+                .antMatchers("/authentication/require","/authentication/mobile",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
-                .and().csrf().disable();
+                .and().csrf().disable()
+                .apply(smsCodeAuthenticationSecurityConfig);
     }
 }
