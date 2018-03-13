@@ -1,5 +1,6 @@
 package com.papaya.security.browser;
 
+import com.papaya.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig;
 import com.papaya.core.properties.PapayaSecurityProperties;
 import com.papaya.core.validate.code.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,7 +42,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
-             //   .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/authentication/require")
                 .loginProcessingUrl("/authentication/form")
