@@ -2,6 +2,7 @@ package com.papaya.wiremock;
 
 import com.github.tomakehurst.wiremock.client.WireMock;
 
+
 public class WiremockServer {
 
     public static void main(String[] args){

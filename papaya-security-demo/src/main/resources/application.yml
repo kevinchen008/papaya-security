@@ -21,6 +21,7 @@ papaya.security:
       browser:
 #        loginPage: /demo-login.html
         loginType: REDIRECT
+        signUpPage: /demo-signup.html
       validateCode:
         imageCode:
           width: 100

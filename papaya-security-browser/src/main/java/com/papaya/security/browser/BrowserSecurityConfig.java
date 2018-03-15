@@ -67,7 +67,7 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(papayaAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/authentication/require","/authentication/mobile","/boot/qq",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
+                .antMatchers("/authentication/require","/authentication/mobile","/boot/qq","/user/register",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

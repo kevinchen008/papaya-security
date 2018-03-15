@@ -10,6 +10,7 @@ import org.springframework.social.config.annotation.SocialConfigurerAdapter;
 import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
+import org.springframework.social.connect.web.ProviderSignInUtils;
 
 import javax.sql.DataSource;
 
@@ -28,15 +29,23 @@ public class SocialConfigure extends SocialConfigurerAdapter {
     @Autowired
     private PapayaSecurityProperties papayaSecurityProperties;
 
-    @Bean
-    public PapayaSocialConfigure papayaSocialConfigure(){
-        PapayaSocialConfigure papayaSocialConfigure = new PapayaSocialConfigure();
-        papayaSocialConfigure.setProcessUrl(papayaSecurityProperties.getSocial().getQq().getFilterProcessesUrl());
-        return papayaSocialConfigure;
-    }
-
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
         return new JdbcUsersConnectionRepository(dataSource,connectionFactoryLocator, Encryptors.noOpText());
     }
+    @Bean
+    public ProviderSignInUtils getPoviderSignInUtils(ConnectionFactoryLocator connectionFactoryLocator){
+        return new ProviderSignInUtils(connectionFactoryLocator,getUsersConnectionRepository(connectionFactoryLocator));
+    }
+
+    @Bean
+    public PapayaSocialConfigure papayaSocialConfigure(){
+        PapayaSocialConfigure papayaSocialConfigure = new PapayaSocialConfigure();
+        papayaSocialConfigure.setProcessUrl(papayaSecurityProperties.getSocial().getQq().getFilterProcessesUrl());
+        papayaSocialConfigure.signupUrl(papayaSecurityProperties.getBrowser().getSignUpPage());
+        return papayaSocialConfigure;
+    }
+
+
+
 }
