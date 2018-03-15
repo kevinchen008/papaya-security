@@ -9,6 +9,8 @@ public class PapayaSecurityProperties {
 
     private ValidateCodeProperties validateCode = new ValidateCodeProperties();
 
+    private SocialProperties social = new SocialProperties();
+
     public BrowserProperties getBrowser() {
         return browser;
     }
@@ -23,5 +25,13 @@ public class PapayaSecurityProperties {
 
     public void setValidateCode(ValidateCodeProperties validateCode) {
         this.validateCode = validateCode;
+    }
+
+    public SocialProperties getSocial() {
+        return social;
+    }
+
+    public void setSocial(SocialProperties social) {
+        this.social = social;
     }
 }

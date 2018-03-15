@@ -28,6 +28,10 @@ papaya.security:
           length: 6
           expried: 60
           urls: /user,/user/*
+       social:
+        qq:
+          app-id:
+          app-secret:
 
 
 #liquibase
