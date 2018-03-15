@@ -3,6 +3,8 @@ package com.papaya.security.browser;
 import com.papaya.core.properties.PapayaSecurityProperties;
 import com.papaya.security.browser.support.SimpleResponse;
 import org.apache.commons.lang.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.web.DefaultRedirectStrategy;
@@ -21,6 +23,8 @@ import java.io.IOException;
 @RestController
 public class BrowserSecurityController {
 
+    Logger logger = LoggerFactory.getLogger(getClass());
+
     private RequestCache requestCache = new HttpSessionRequestCache();
 
     private RedirectStrategy redirectStrategy = new DefaultRedirectStrategy();
@@ -32,6 +36,7 @@ public class BrowserSecurityController {
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request,response);
+        logger.info("引发跳转的路劲：" +savedRequest.getRedirectUrl());
         if(savedRequest!=null){
             String targetUrl = savedRequest.getRedirectUrl();
             if(StringUtils.endsWithIgnoreCase(targetUrl,".html")){

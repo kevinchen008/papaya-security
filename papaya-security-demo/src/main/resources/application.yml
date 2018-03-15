@@ -1,6 +1,6 @@
 #app
 server:
-    port: 8080
+    port: 80
 
 #spring
 spring:
@@ -28,10 +28,11 @@ papaya.security:
           length: 6
           expried: 60
           urls: /user,/user/*
-       social:
+      social:
         qq:
-          app-id:
-          app-secret:
+          app-id: 101461863
+          app-secret: acc38fd0dd9c8f4150827fd5ab4bd3d1
+          filterProcessesUrl: /boot
 
 
 #liquibase

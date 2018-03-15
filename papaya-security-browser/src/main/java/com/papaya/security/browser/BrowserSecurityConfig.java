@@ -4,8 +4,11 @@ import com.papaya.core.authentication.mobile.SmsCodeAuthenticationSecurityConfig
 import com.papaya.core.properties.PapayaSecurityProperties;
 import com.papaya.core.validate.code.ValidateCodeFilter;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.autoconfigure.jdbc.DataSourceBuilder;
+import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Primary;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -15,6 +18,8 @@ import org.springframework.security.web.authentication.AuthenticationFailureHand
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.social.security.SpringSocialConfigurer;
+
+import javax.sql.DataSource;
 
 @Configuration
 @EnableWebSecurity
@@ -36,12 +41,20 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
     private SmsCodeAuthenticationSecurityConfig smsCodeAuthenticationSecurityConfig;
 
     @Autowired
-    private SpringSocialConfigurer springSocialConfig;
+    private SpringSocialConfigurer springSocialConfigurer;
+
+    @Bean
+    @Primary
+    @ConfigurationProperties(prefix = "spring.datasource")
+    public DataSource primaryDataSource() {
+        return DataSourceBuilder.create().build();
+    }
 
     @Bean
     public PasswordEncoder passwordEncoder(){
         return new BCryptPasswordEncoder();
     }
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -54,12 +67,12 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(papayaAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/authentication/require","/authentication/mobile",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
+                .antMatchers("/authentication/require","/authentication/mobile","/boot/qq",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().csrf().disable()
-                .apply(springSocialConfig)
+                .apply(springSocialConfigurer)
                 .and()
                 .apply(smsCodeAuthenticationSecurityConfig);
                ;
