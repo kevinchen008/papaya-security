@@ -37,7 +37,7 @@ public class UserController {
     private ProviderSignInUtils providerSignInUtils;
 
 
-    @PostMapping("/register")
+    @PostMapping("/regist")
     public void register( HttpServletRequest request) {
 
         //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。

@@ -58,16 +58,19 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+
+       // http.formLogin().and().authorizeRequests().anyRequest().authenticated();
+
         http
                 .addFilterBefore(validateCodeFilter, UsernamePasswordAuthenticationFilter.class)
                 .formLogin()
                 .loginPage("/authentication/require")
-                .loginProcessingUrl("/authentication/form")
+                .loginProcessingUrl("/authentication/form1")
                 .successHandler(papayaAuthenticationSuccessHandler)
                 .failureHandler(papayaAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/authentication/require","/authentication/mobile","/boot/qq","/user/register","/demo-signup.html",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
+                .antMatchers("/authentication/require","/authentication/mobile","/authentication/form1","/boot/qq","/demo-signup.html",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image","/user/regist")
                 .permitAll()
                 .anyRequest()
                 .authenticated()

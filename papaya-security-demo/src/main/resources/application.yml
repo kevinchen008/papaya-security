@@ -1,4 +1,4 @@
-debug : true
+#debug : true
 
 #app
 server:
@@ -30,7 +30,7 @@ papaya.security:
           height: 50
           length: 6
           expried: 60
-          urls: /user,/user/*
+        #  urls: /user,/user/*
       social:
         qq:
           app-id: 101461863
