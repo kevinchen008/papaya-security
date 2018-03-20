@@ -14,6 +14,7 @@ import org.springframework.security.web.savedrequest.RequestCache;
 import org.springframework.security.web.savedrequest.SavedRequest;
 import org.springframework.social.connect.Connection;
 import org.springframework.social.connect.web.ProviderSignInUtils;
+import org.springframework.social.security.SpringSocialConfigurer;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,11 +39,12 @@ public class BrowserSecurityController {
     @Autowired
     private ProviderSignInUtils providerSignInUtils;
 
+
     @RequestMapping("/authentication/require")
     @ResponseStatus(HttpStatus.UNAUTHORIZED)
     public SimpleResponse requireAuthentication(HttpServletRequest request, HttpServletResponse response) throws IOException {
         SavedRequest savedRequest = requestCache.getRequest(request,response);
-        logger.info("引发跳转的路劲：" +savedRequest.getRedirectUrl());
+     //   logger.info("引发跳转的路劲：" +savedRequest.getRedirectUrl());
         if(savedRequest!=null){
             String targetUrl = savedRequest.getRedirectUrl();
             if(StringUtils.endsWithIgnoreCase(targetUrl,".html")){

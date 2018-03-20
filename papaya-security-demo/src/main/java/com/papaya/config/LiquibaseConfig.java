@@ -12,7 +12,7 @@ import javax.sql.DataSource;
  * @CreateDate: 2018/2/26 16:52
  * @Version: 1.0
  */
-@Configuration
+//@Configuration
 public class LiquibaseConfig {
 
     @Bean

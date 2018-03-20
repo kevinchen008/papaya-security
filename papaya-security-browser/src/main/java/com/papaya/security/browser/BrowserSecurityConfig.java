@@ -67,14 +67,13 @@ public class BrowserSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureHandler(papayaAuthenticationFailureHandler)
                 .and()
                 .authorizeRequests()
-                .antMatchers("/authentication/require","/authentication/mobile","/boot/qq","/user/register",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
+                .antMatchers("/authentication/require","/authentication/mobile","/boot/qq","/user/register","/demo-signup.html",papayaSecurityProperties.getBrowser().getLoginPage(),"/code/image")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and().csrf().disable()
-                .apply(springSocialConfigurer)
+                .apply(smsCodeAuthenticationSecurityConfig)
                 .and()
-                .apply(smsCodeAuthenticationSecurityConfig);
-               ;
+                .apply(springSocialConfigurer);
     }
 }

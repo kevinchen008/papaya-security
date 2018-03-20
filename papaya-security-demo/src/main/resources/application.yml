@@ -1,3 +1,5 @@
+debug : true
+
 #app
 server:
     port: 80

@@ -2,13 +2,18 @@ package com.papaya.controller;
 
 import com.fasterxml.jackson.annotation.JsonView;
 import com.papaya.Exception.UserNotExistException;
+import com.papaya.core.properties.PapayaSecurityProperties;
+import com.papaya.core.validate.code.ValidateCodeProcesserHolder;
 import com.papaya.entity.User;
 import io.swagger.annotations.ApiModelProperty;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiParam;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.social.connect.ConnectionFactoryLocator;
+import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInUtils;
+import org.springframework.social.security.SpringSocialConfigurer;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.ServletWebRequest;
@@ -31,14 +36,15 @@ public class UserController {
     @Autowired
     private ProviderSignInUtils providerSignInUtils;
 
-    @PostMapping("/regist")
-    public void regist(User user, HttpServletRequest request) {
+
+    @PostMapping("/register")
+    public void register( HttpServletRequest request) {
 
         //不管是注册用户还是绑定用户，都会拿到一个用户唯一标识。
-        String userId = user.getUsername();
-        providerSignInUtils.doPostSignUp(userId, new ServletWebRequest(request));
-    }
+       // String userId = user.getUsername();
+        providerSignInUtils.doPostSignUp("111111111", new ServletWebRequest(request));
 
+    }
 
     @GetMapping
     @JsonView(User.userSimpleView.class)
@@ -136,14 +142,14 @@ public class UserController {
     }
 
     //开启线程定时扫描队列，响应客户端
-    @Scheduled(fixedRate = 1000)
+ /*   @Scheduled(fixedRate = 1000)
     public void scheduleResult(){
         System.out.println(new Date());
         for(int i = 0;i < deferredResults.size();i++){
             DeferredResult<String> deferredResult = deferredResults.getFirst();
             deferredResult.setResult("result:" + i);
         }
-    }
+    }*/
 
 
 }

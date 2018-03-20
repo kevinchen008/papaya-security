@@ -1,6 +1,8 @@
 package com.papaya.core.social.qq;
 
 import com.papaya.core.properties.PapayaSecurityProperties;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -11,6 +13,7 @@ import org.springframework.social.connect.ConnectionFactoryLocator;
 import org.springframework.social.connect.UsersConnectionRepository;
 import org.springframework.social.connect.jdbc.JdbcUsersConnectionRepository;
 import org.springframework.social.connect.web.ProviderSignInUtils;
+import org.springframework.social.security.SpringSocialConfigurer;
 
 import javax.sql.DataSource;
 
@@ -22,30 +25,22 @@ import javax.sql.DataSource;
  */
 @Configuration
 @EnableSocial
-public class SocialConfigure extends SocialConfigurerAdapter {
+public class SocialConfig extends SocialConfigurerAdapter {
+
+    Logger logger = LoggerFactory.getLogger(getClass());
+
     @Autowired
     private DataSource dataSource;
 
-    @Autowired
-    private PapayaSecurityProperties papayaSecurityProperties;
 
     @Override
     public UsersConnectionRepository getUsersConnectionRepository(ConnectionFactoryLocator connectionFactoryLocator) {
         return new JdbcUsersConnectionRepository(dataSource,connectionFactoryLocator, Encryptors.noOpText());
     }
+
+
     @Bean
-    public ProviderSignInUtils getPoviderSignInUtils(ConnectionFactoryLocator connectionFactoryLocator){
+    public ProviderSignInUtils providerSignInUtils(ConnectionFactoryLocator connectionFactoryLocator) {
         return new ProviderSignInUtils(connectionFactoryLocator,getUsersConnectionRepository(connectionFactoryLocator));
     }
-
-    @Bean
-    public PapayaSocialConfigure papayaSocialConfigure(){
-        PapayaSocialConfigure papayaSocialConfigure = new PapayaSocialConfigure();
-        papayaSocialConfigure.setProcessUrl(papayaSecurityProperties.getSocial().getQq().getFilterProcessesUrl());
-        papayaSocialConfigure.signupUrl(papayaSecurityProperties.getBrowser().getSignUpPage());
-        return papayaSocialConfigure;
-    }
-
-
-
 }
