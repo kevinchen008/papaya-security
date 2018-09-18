@@ -4,27 +4,39 @@ package ${package.Entity};
 import ${pkg};
 #end
 #if(${entityLombokModel})
-
-import com.baomidou.mybatisplus.annotations.Version;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.experimental.Accessors;
 #end
 
 /**
- * <p>
- * $!{table.comment}
- * </p>
+ *code is far away from bug with the animal protecting
+ *  ┏┓　　　┏┓
+ *┏┛┻━━━┛┻┓
+ *┃　　　　　　　┃ 　
+ *┃　　　━　　　┃
+ *┃　┳┛　┗┳　┃
+ *┃　　　　　　　┃
+ *┃　　　┻　　　┃
+ *┃　　　　　　　┃
+ *┗━┓　　　┏━┛
+ *　　┃　　　┃神兽保佑
+ *　　┃　　　┃代码无BUG！
+ *　　┃　　　┗━━━┓
+ *　　┃　　　　　　　┣┓
+ *　　┃　　　　　　　┏┛
+ *　　┗┓┓┏━┳┓┏┛
+ *　　　┃┫┫　┃┫┫
+ *　　　┗┻┛　┗┻┛
  *
- * @author ${author}
- * @since ${date}
+ *   @Description : MybatisPlus代码生成器
+ *   ---------------------------------
+ *   @Author : ${author}
+ *   @Date : ${date}
  */
 #if(${entityLombokModel})
 @Data
-#if(${superEntityClass})
-@EqualsAndHashCode(callSuper = true)
-#end
+@EqualsAndHashCode( callSuper = true )
 @Accessors(chain = true)
 #end
 #if(${table.convert})
@@ -40,7 +52,6 @@ public class ${entity} implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-## ----------  BEGIN 字段循环遍历  ----------
 #foreach($field in ${table.fields})
 #if(${field.keyFlag})
 #set($keyPropertyName=${field.propertyName})
@@ -51,91 +62,72 @@ public class ${entity} implements Serializable {
      */
 #end
 #if(${field.keyFlag})
-## 主键
 #if(${field.keyIdentityFlag})
-    @TableId(value = "${field.name}", type = IdType.AUTO)
-#elseif(!$null.isNull(${idType}) && "$!idType" != "")
-    @TableId(value = "${field.name}", type = IdType.${idType})
+	@TableId(value="${field.name}", type= IdType.AUTO)
 #elseif(${field.convert})
     @TableId("${field.name}")
 #end
-## 普通字段
-#elseif(${field.fill})
-## -----   存在字段填充设置   -----
-#if(${field.convert})
-    @TableField(value = "${field.name}", fill = FieldFill.${field.fill})
-#else
-    @TableField(fill = FieldFill.${field.fill})
-#end
 #elseif(${field.convert})
-    @TableField("${field.name}")
+	@TableField("${field.name}")
 #end
-## 乐观锁注解
-#if(${versionFieldName}==${field.name})
-    @Version
+	private ${field.propertyType} ${field.propertyName};
 #end
-## 逻辑删除注解
-#if(${logicDeleteFieldName}==${field.name})
-    @TableLogic
-#end
-    private ${field.propertyType} ${field.propertyName};
-#end
-## ----------  END 字段循环遍历  ----------
 
 #if(!${entityLombokModel})
 #foreach($field in ${table.fields})
-#if(${field.propertyType.equals("boolean")})
+#if(${field.propertyType.equals("Boolean")})
 #set($getprefix="is")
 #else
 #set($getprefix="get")
 #end
 
-    public ${field.propertyType} ${getprefix}${field.capitalName}() {
-        return ${field.propertyName};
-    }
+	public ${field.propertyType} ${getprefix}${field.capitalName}() {
+		return ${field.propertyName};
+	}
 
 #if(${entityBuilderModel})
-    public ${entity} set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
+	public ${entity} set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
 #else
-    public void set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
+	public void set${field.capitalName}(${field.propertyType} ${field.propertyName}) {
 #end
-        this.${field.propertyName} = ${field.propertyName};
+		this.${field.propertyName} = ${field.propertyName};
 #if(${entityBuilderModel})
-        return this;
+		return this;
 #end
-    }
+	}
 #end
 #end
 
 #if(${entityColumnConstant})
 #foreach($field in ${table.fields})
-    public static final String ${field.name.toUpperCase()} = "${field.name}";
+	public static final String ${field.name.toUpperCase()} = "${field.name}";
 
 #end
 #end
 #if(${activeRecord})
-    @Override
-    protected Serializable pkVal() {
+	@Override
+	protected Serializable pkVal() {
 #if(${keyPropertyName})
-        return this.${keyPropertyName};
+		return this.${keyPropertyName};
 #else
-        return this.id;
+		return this.id;
 #end
-    }
+	}
 
 #end
 #if(!${entityLombokModel})
-    @Override
-    public String toString() {
-        return "${entity}{" +
+	@Override
+	public String toString() {
+		return "${entity}{" +
 #foreach($field in ${table.fields})
 #if($!{velocityCount}==1)
-        "${field.propertyName}=" + ${field.propertyName} +
+			"${field.propertyName}=" + ${field.propertyName} +
 #else
-        ", ${field.propertyName}=" + ${field.propertyName} +
+			", ${field.propertyName}=" + ${field.propertyName} +
 #end
 #end
-        "}";
-    }
+			"}";
+	}
+}
 #end
 }

@@ -1,7 +1,8 @@
-package ${package.Mapper};
+package com.papaya.front.service;
 
-import ${package.Entity}.${entity};
-import ${superMapperClassPackage};
+import com.papaya.front.entity.XftBrokerOrgBuilding;
+import com.baomidou.mybatisplus.service.IService;
+import com.baomidou.mybatisplus.plugins.Page;
 
 /**
  *code is far away from bug with the animal protecting
@@ -25,13 +26,17 @@ import ${superMapperClassPackage};
  *
  *   @Description : MybatisPlus代码生成器
  *   ---------------------------------
- *   @Author : ${author}
- *   @Date : ${date}
+ *   @Author : Kevin.Chen
+ *   @Date : 2018-09-18
  */
-#if(${kotlin})
-interface ${table.mapperName} : ${superMapperClass}<${entity}>
-#else
-public interface ${table.mapperName} extends ${superMapperClass}<${entity}> {
+public interface XftBrokerOrgBuildingService extends IService<XftBrokerOrgBuilding> {
 
+    /**
+     *
+    */
+    Page<XftBrokerOrgBuilding> listPage(Page<XftBrokerOrgBuilding> page);
+    
+    
+    
+        
 }
-#end

@@ -1,8 +1,9 @@
-package ${package.Controller};
+package com.papaya.front.controller;
 
+import com.papaya.front.common.GenericResponse;
 import org.springframework.http.ResponseEntity;
-import ${package.Entity}.${entity};
-import ${package.Service}.${table.serviceName};
+import com.papaya.front.entity.XftBrokerOrgBuilding;
+import com.papaya.front.service.XftBrokerOrgBuildingService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -10,13 +11,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.plugins.Page;
 
-#if(${restControllerStyle})
-#else
-import org.springframework.stereotype.Controller;
-#end
-#if(${superControllerClassPackage})
-import ${superControllerClassPackage};
-#end
+import javax.ws.rs.core.Response;
+
+
 
 /**
  *code is far away from bug with the animal protecting
@@ -40,39 +37,35 @@ import ${superControllerClassPackage};
  *
  *   @Description : MybatisPlus代码生成器
  *   ---------------------------------
- *   @Author : ${author}
- *   @Date : ${date}
+ *   @Author : Kevin.Chen
+ *   @Date : 2018-09-18
  */
-#if(${restControllerStyle})
 @RestController
-#else
-@Controller
-#end
-@RequestMapping("#if(${package.ModuleName})/${package.ModuleName}s#end#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}s#else${table.entityPath}s#end")
-#if(${superControllerClass})
-public class ${table.controllerName} extends ${superControllerClass} {
-#else
-public class ${table.controllerName} {
-#end
+@RequestMapping("xftBrokerOrgBuildings")
+public class XftBrokerOrgBuildingController {
 
-    private final Logger logger = LoggerFactory.getLogger(${table.controllerName}.class);
+    private final Logger logger = LoggerFactory.getLogger(XftBrokerOrgBuildingController.class);
 
     @Autowired
-    private ${table.serviceName} i${entity}Service;
+    private XftBrokerOrgBuildingService iXftBrokerOrgBuildingService;
+
 
     @GetMapping("{id}")
-    public ResponseEntity< ${entity} > get ( @PathVariable String id ){
-        return ResponseEntity.ok().body(i${entity}Service.selectById( id ));
+    public Response get (@PathVariable String id ){
+        GenericResponse response = new GenericResponse();
+        response.setStatus(0);
+        response.setObjValue(iXftBrokerOrgBuildingService.selectById( id ));
+        return Response.status(200).entity(response).build();
     }
 
     @GetMapping
-    public ResponseEntity< Page<${entity}> > list ( Page<${entity}> page ){
-        return ResponseEntity.ok().body(i${entity}Service.listPage( page ));
+    public ResponseEntity< Page<XftBrokerOrgBuilding> > list ( Page<XftBrokerOrgBuilding> page ){
+        return ResponseEntity.ok().body(iXftBrokerOrgBuildingService.listPage( page ));
     }
 
     @PostMapping
-    public ResponseEntity insert ( @RequestBody ${entity} request${entity} ){
-        if ( !i${entity}Service.insert( request${entity} ) ){
+    public ResponseEntity insert ( @RequestBody XftBrokerOrgBuilding requestXftBrokerOrgBuilding ){
+        if ( !iXftBrokerOrgBuildingService.insert( requestXftBrokerOrgBuilding ) ){
             return ResponseEntity.badRequest().body("保存失败");
         }
         return ResponseEntity.ok("保存成功");
@@ -80,8 +73,8 @@ public class ${table.controllerName} {
 
     @PutMapping("{id}")
     public ResponseEntity update ( @PathVariable String id,
-                                              @RequestBody ${entity} request${entity} ){
-        if ( ! i${entity}Service.updateById( request${entity}.setId(id)) ){
+                                              @RequestBody XftBrokerOrgBuilding requestXftBrokerOrgBuilding ){
+        if ( ! iXftBrokerOrgBuildingService.updateById( requestXftBrokerOrgBuilding.setId(id)) ){
             return ResponseEntity.badRequest().body("更新失败");
         }
         return ResponseEntity.ok("更新成功");
@@ -89,7 +82,7 @@ public class ${table.controllerName} {
 
     @DeleteMapping("{id}")
     public ResponseEntity delete ( @PathVariable String id ){
-        if ( ! i${entity}Service.deleteById(id) ){
+        if ( ! iXftBrokerOrgBuildingService.deleteById(id) ){
             return ResponseEntity.badRequest().body("删除失败");
         }
         return ResponseEntity.ok("删除成功");

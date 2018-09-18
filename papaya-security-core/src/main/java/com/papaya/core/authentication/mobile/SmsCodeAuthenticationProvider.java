@@ -9,9 +9,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 
 public class SmsCodeAuthenticationProvider implements AuthenticationProvider {
 
-
     private UserDetailsService userDetailsService;
-
 
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {

@@ -1,0 +1,21 @@
+
+#spring
+spring:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://127.0.0.1:3306/papaya?useUnicode=yes
+      username: root
+      password: 123456
+    session:
+      store-type: none
+    profiles: dev
+
+
+#liquibase
+liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+    user: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/papaya
+    enabled: true
+    drop-first: false

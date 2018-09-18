@@ -45,7 +45,7 @@ public class SmsCodeAuthenticationFilter extends
 
         mobile = mobile.trim();
 
-       SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(mobile);
+        SmsCodeAuthenticationToken authRequest = new SmsCodeAuthenticationToken(mobile);
 
         // Allow subclasses to set the "details" property
         setDetails(request, authRequest);

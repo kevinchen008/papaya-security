@@ -1,9 +1,9 @@
-package ${package.ServiceImpl};
+package com.papaya.front.service.impl;
 
-import ${package.Entity}.${entity};
-import ${package.Mapper}.${table.mapperName};
-import ${package.Service}.${table.serviceName};
-import ${superServiceImplClassPackage};
+import com.papaya.front.entity.XftBrokerOrgBuilding;
+import com.papaya.front.mapper.XftBrokerOrgBuildingMapper;
+import com.papaya.front.service.XftBrokerOrgBuildingService;
+import com.baomidou.mybatisplus.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 
 import com.baomidou.mybatisplus.plugins.Page;
@@ -31,16 +31,18 @@ import com.baomidou.mybatisplus.plugins.Page;
  *
  *   @Description : MybatisPlus代码生成器
  *   ---------------------------------
- *   @Author : ${author}
- *   @Date : ${date}
+ *   @Author : Kevin.Chen
+ *   @Date : 2018-09-18
  */
 @Service
-public class ${table.serviceImplName} extends ${superServiceImplClass}<${table.mapperName}, ${entity}> implements ${table.serviceName} {
+public class iXftBrokerOrgBuildingService extends ServiceImpl<XftBrokerOrgBuildingMapper, XftBrokerOrgBuilding> implements XftBrokerOrgBuildingService {
 
 
     @Override
-    public Page<${entity}> listPage( Page<${entity}> page ) {
-        return super.selectPage(page,null );
+    public Page<XftBrokerOrgBuilding> listPage( Page<XftBrokerOrgBuilding> page ) {
+        Page<XftBrokerOrgBuilding> pageData =  super.selectPage(page,null );
+        pageData.setTotal(super.selectCount(null));
+        return pageData;
     }
     
     

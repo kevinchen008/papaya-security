@@ -3,7 +3,6 @@ package com.papaya.core.social.qq.connect;
 import com.papaya.core.social.qq.api.QQ;
 import com.papaya.core.social.qq.api.QQImpl;
 import org.springframework.social.oauth2.AbstractOAuth2ServiceProvider;
-import org.springframework.social.oauth2.OAuth2Template;
 
 public class QQServiceProvider extends AbstractOAuth2ServiceProvider<QQ> {
 

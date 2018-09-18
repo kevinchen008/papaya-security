@@ -7,6 +7,7 @@ import org.springframework.social.connect.ConnectionValues;
 import org.springframework.social.connect.UserProfile;
 
 public class QQAdapter implements ApiAdapter<QQ> {
+
     @Override
     public boolean test(QQ api) {
         return true;

@@ -1,0 +1,21 @@
+
+#spring
+spring:
+    datasource:
+      driver-class-name: com.mysql.jdbc.Driver
+      url: jdbc:mysql://172.19.50.147:3306/zituo?useUnicode=yes
+      username: root
+      password: Root!123
+    session:
+      store-type: none
+    profiles: dev
+
+
+#liquibase
+liquibase:
+    change-log: classpath:/config/liquibase/master.xml
+    user: root
+    password: Root!123
+    url: jdbc:mysql://172.19.50.147:3306/zituo?useUnicode=yes
+    enabled: true
+    drop-first: false
