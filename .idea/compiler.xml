@@ -1,9 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+    </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="papaya-generator_main" target="1.8" />
       <module name="papaya-generator_test" target="1.8" />
+      <module name="papaya-security-adm_main" target="1.8" />
+      <module name="papaya-security-adm_test" target="1.8" />
+      <module name="papaya-security-admin_main" target="1.8" />
+      <module name="papaya-security-admin_test" target="1.8" />
       <module name="papaya-security-app_main" target="1.8" />
       <module name="papaya-security-app_test" target="1.8" />
       <module name="papaya-security-browser_main" target="1.8" />

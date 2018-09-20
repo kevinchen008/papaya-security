@@ -1,6 +1,6 @@
 package com.papaya.front.controller;
 
-import com.papaya.front.common.GenericResponse;
+import io.swagger.annotations.*;
 import org.springframework.http.ResponseEntity;
 import com.papaya.front.entity.XftBrokerOrgBuilding;
 import com.papaya.front.service.XftBrokerOrgBuildingService;
@@ -10,9 +10,6 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import com.baomidou.mybatisplus.plugins.Page;
-
-import javax.ws.rs.core.Response;
-
 
 
 /**
@@ -42,6 +39,7 @@ import javax.ws.rs.core.Response;
  */
 @RestController
 @RequestMapping("xftBrokerOrgBuildings")
+@Api("swaggerTestController相关api")
 public class XftBrokerOrgBuildingController {
 
     private final Logger logger = LoggerFactory.getLogger(XftBrokerOrgBuildingController.class);
@@ -49,13 +47,15 @@ public class XftBrokerOrgBuildingController {
     @Autowired
     private XftBrokerOrgBuildingService iXftBrokerOrgBuildingService;
 
-
+    @ApiOperation(value = "根据id查询学生的信息",notes = "查询数据库中某个学生的信息")
+    @ApiImplicitParam(name ="id",value = "学生id",paramType = "path",required = true,dataType = "String")
+    @ApiResponses({
+            @ApiResponse(code=400,message = "请求参数没有填好"),
+            @ApiResponse(code=404,message="请求路径没有找到")
+    })
     @GetMapping("{id}")
-    public Response get (@PathVariable String id ){
-        GenericResponse response = new GenericResponse();
-        response.setStatus(0);
-        response.setObjValue(iXftBrokerOrgBuildingService.selectById( id ));
-        return Response.status(200).entity(response).build();
+    public ResponseEntity< XftBrokerOrgBuilding > get ( @PathVariable String id ){
+        return ResponseEntity.ok().body(iXftBrokerOrgBuildingService.selectById( id ));
     }
 
     @GetMapping

@@ -6,6 +6,12 @@
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_main.iml" group="papaya-generator" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-generator/papaya-generator_test.iml" group="papaya-generator" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-adm/papaya-security-adm.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-adm/papaya-security-adm.iml" group="papaya-security-adm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-adm/papaya-security-adm_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-adm/papaya-security-adm_main.iml" group="papaya-security-adm" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-adm/papaya-security-adm_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-adm/papaya-security-adm_test.iml" group="papaya-security-adm" />
+      <module fileurl="file://$PROJECT_DIR$/papaya-security-admin/papaya-security-admin.iml" filepath="$PROJECT_DIR$/papaya-security-admin/papaya-security-admin.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-admin_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-admin_main.iml" group="papaya-security-admin" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-admin_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-admin_test.iml" group="papaya-security-admin" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app.iml" group="papaya-security-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_main.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_main.iml" group="papaya-security-app" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_test.iml" filepath="$PROJECT_DIR$/.idea/modules/papaya-security-app/papaya-security-app_test.iml" group="papaya-security-app" />

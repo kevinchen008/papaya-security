@@ -5,16 +5,28 @@
       <GradleProjectSettings>
         <option name="distributionType" value="LOCAL" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="gradleHome" value="$PROJECT_DIR$/../../../../env/gradle-3.2.1-all/gradle-3.2.1" />
+        <option name="gradleHome" value="F:/../../env/gradle-3.2.1-all/gradle-3.2.1" />
         <option name="gradleJvm" value="1.8" />
         <option name="modules">
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/papaya-generator" />
+            <option value="$PROJECT_DIR$/papaya-security-adm" />
             <option value="$PROJECT_DIR$/papaya-security-app" />
             <option value="$PROJECT_DIR$/papaya-security-browser" />
             <option value="$PROJECT_DIR$/papaya-security-core" />
             <option value="$PROJECT_DIR$/papaya-security-demo" />
+          </set>
+        </option>
+        <option name="useAutoImport" value="true" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="distributionType" value="LOCAL" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$/papaya-security-admin" />
+        <option name="gradleHome" value="F:/EnvVar/gradle-4.6" />
+        <option name="modules">
+          <set>
+            <option value="$PROJECT_DIR$/papaya-security-admin" />
           </set>
         </option>
         <option name="useAutoImport" value="true" />

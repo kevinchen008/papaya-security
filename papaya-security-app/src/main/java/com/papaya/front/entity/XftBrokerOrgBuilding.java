@@ -39,6 +39,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode( callSuper = true )
 @Accessors(chain = true)
 @TableName("xft_broker_org_building")
+
 public class XftBrokerOrgBuilding extends Model<XftBrokerOrgBuilding> {
 
     private static final long serialVersionUID = 1L;
